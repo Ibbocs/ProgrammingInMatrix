@@ -2,23 +2,119 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Metadata;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace HomeWorks
 {
     class Program
     {
-        //arayyda longlengt nedi
-        //task1 sual var icinde
-        //bu klasda method statik olmalidi amma studentde buna gereek yoxdu niye?
-        //task 2de sualim var icinde
-        //sual demeli bir applicationda 1 esas proqram adinda class olur ve elave diger basqa classalrdan da ibaret olur demeli?
-        //fild ve propeti ferqi
-        //static methodda class olanda hemin clasinin neyini qaytarir? gorduyu isi?
-        //params tezeden basa salin
-        //construct ile static ile deyer vermeyin ferqi
         static void Main(string[] args)
+        {
+
+        }
+        static void MainOPP2(string[] args)
+        {
+            
+            //abstract class ucun orney, harda onu isledilller
+            //bir clasda abstrac metod varsa hemin klasi inherent eledikde overrride elemek lazimdi hemin methodu
+            //eyni adli coxlu metod yaratmaq olar constructurdan ferqli?
+            //bir nece dene statit method yaratmaq olar?
+            //baseClass daki static method birinci isleyer yoxsa bundan toredilen clasin conustruturu
+            //abstrac class bir clasa toredile biler ancaq?
+            //abstrac medod abstra clasda olur ve bu clas hara inherent edilibse olarda bu metod yazilmalidi mutleq body ile?
+            // public int StudentID { get; set; } ne bu
+            //emlpoye class icinde suallar var
+
+            #region Task1
+
+            //1.Phone adlı class olacaq.İçində Company, Model, ReleaseDay deyə üç string field olacaq.Və bu classın 3 fərqli constructoru olacaq.
+            //- constructor bütün bu bu fieldlerin hamısının dəyərini “unknown” yazacaq
+            //-digər bir constructor isə 2 parametr qəbul edəcək(company və model) və uyğun fieldlərə gələn dəyəri set edəcək
+            //-digər constructor 3 argument qəbul edəcək(company, model, releaseday) və uyğun fieldlərə bu qəbul etdiyi dəyərlərə set edəcək
+
+
+            #endregion
+            #region Task2
+
+            //2.Employee adlı base class yaradın.
+            //Propertyleri-Name,FirstName,Salary olacaq.
+            //Və iki metodu olacaq.Work() və Pause().
+            //Daha sonra onnan törənən class olacaq Boss adlı.
+            //CompanyCar adlı property Lead() metodu olacaq.
+            //İkinci bir class olacaq yenə Employee-dən törənən Trainees adlı.
+            //Propertyləri  WorkingHours və SchoolHours olacaq. Learn() metodu
+            //1.Work() metodunu override edeceksiz Trainee classında(tərkibini dəyişərək)
+            //2.Constructorları yaratmağı da unutmayin hər bir classda.
+
+            Trainees trn = new Trainees();
+
+
+            #endregion
+            #region Task3
+
+            //3.Daha sonra hər bir classında obyektini yaradın(içinə istədiyiniz valuelar göndərin özünüz yazıb).
+            //Və Boss classın Lead() metodunu və Trainee classının  Work() metodnu çağırın.
+            //Metodların içincə cnsole mesaj çıxardın kı hansının şlədiyini bilək.Məsələn Lead() metodu “I am leading” kimi mesaj çıxarsın
+
+            Trainees trainers = new Trainees() { WorkingHours = "5", SchoolHours = "3"};
+            Boss boss =  new Boss();
+            boss.CompanyCar = "Fiat";
+
+            boss.Name = "Qasim";
+            trainers.Name = "Moon";
+
+            boss.Lead();
+            trainers.Work("baki");
+            #endregion
+
+            #region
+
+            //4.Arraydan Duplikatları silmək.Sizə sıralanmış array veriləcək(Consolde-dan daxil edilməyəcək əlavə metod kimi yazın)
+            //Və o arrayda təkrarlananları sildikdən sonra array uzunlugu nə olar onu qaytaracaqsiz.
+            //Burda önəmli olan mövcüd array üzərində dəyişiklik edəcəksiz.Yəni əslində heçnə silmiyəcəksiz.
+            //Önəmli olan ilk əvvəkl unikal olan rəqəmlər üzunluğu gəlsin geridə qalanlara fikir verməyin
+
+            //Input: nums = [1, 1, 2] -
+            //Output: 2 olacaq çünki[1, 2, _]
+            //Input: nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+            //Output: 5 olacaq çünki nums = [0, 1, 2, 3, 4, _, _, _, _, _]
+
+            int[] nums = { 3, 3, 1, 3};
+
+            int[] check = new int[nums.Length];
+            int say = 0;
+            int checkk =0;
+
+            Console.WriteLine(nums[0]);
+
+            for (int j = 1; j < nums.Length; j++)
+            {
+                for (int i = j; i >= 0; i--)
+                {
+                    if (nums[j] != nums[i])
+                    {
+                        checkk ++;
+                    }
+                }
+
+                if (checkk == j)
+                {
+                    Console.WriteLine(nums[j]);
+                    say++;
+                    
+                }
+                checkk = 0;
+            }
+
+           Console.WriteLine(say + 1 );
+
+            #endregion
+        }
+
+        static void MainClass(string[] args)
         {
             #region Task1
             //Task 1
@@ -180,12 +276,21 @@ namespace HomeWorks
         }
         static void MainLesson5Array(string[] args)
         {
+            //arayyda longlengt nedi
+            //task1 sual var icinde
+            //bu klasda method statik olmalidi amma studentde buna gereek yoxdu niye?
+            //task 2de sualim var icinde
+            //sual demeli bir applicationda 1 esas proqram adinda class olur ve elave diger basqa classalrdan da ibaret olur demeli?
+            //fild ve propeti ferqi
+            //static methodda class olanda hemin clasinin neyini qaytarir? gorduyu isi?
+            //params tezeden basa salin
+            //construct ile static ile deyer vermeyin ferqi
             #region Task1
             //Task1.2method olacag.Bunu Main metodunda da yaza bilərsiniz.
 
             //GetOdd() verilen arraydakı bütün cüt rəqəmləri gətirəcək
             //GetEven() verilən arraydakə tək rəqəmləri gətirəcək.(burda input array 2D olacaq)
-           
+
 
             int[] intArray = { 1, 2, 3, 4, 5, 9, 14, 13, 45, 32 };
             int[,] intArray2 = new int[2, 5]
